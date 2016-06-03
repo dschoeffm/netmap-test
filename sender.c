@@ -150,12 +150,14 @@ int main (int argc, char** argv){
 	pthread_create(&thread, NULL, printer, NULL);
 
 	while(1){
+		/*
 		if(ring->head < ring->tail){
 			sent_packets += ring->tail - ring->head;
 		}
 		else {
 			sent_packets += ring->num_slots - ring->head + ring->tail;
 		}
+		*/
 		ring->head = ring->tail;
 		ring->cur = ring->tail;
 		ioctl(fd, NIOCTXSYNC);
